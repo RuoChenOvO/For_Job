@@ -1,28 +1,18 @@
 # FastAPI 学习 Todo（目标：包一个模型对话接口）
 
-> 总目标：写一个 
->
+> 总目标：写一个
 > `/chat`
->
->  接口（接 DeepSeek API 或 mock）+ pytest 测试 + Docker Compose 启动
-> 教材：官方中文教程 
->
+> 接口（接 DeepSeek API 或 mock）+ pytest 测试 + Docker Compose 启动
+> 教材：官方中文教程
 > [https://fastapi.tiangolo.com/zh/tutorial/](https://fastapi.tiangolo.com/zh/tutorial/)
->
 > （按官方 learn 目录顺序学）
 > 原则：
->
 > **只学下面勾选的必学项；标【速过】的扫一眼即可；选学项用到再翻；跳过项现在别碰**
->
 > 。每学一章，当天就把示例代码跑一遍（
->
 > `uv run fastapi dev`
->
->  \+ 浏览器开 
->
+> \+ 浏览器开
 > `/docs`
->
->  调试）。
+> 调试）。
 
 
 
@@ -46,7 +36,7 @@
 
 - 验收：写一个 `GET /chat/{session_id}`，故意传字符串当 id，看自动报错
 
-* [ ] **2b.【速过】路径参数和数值校验** — [https://fastapi.tiangolo.com/zh/tutorial/path-params-numeric-validations/](https://fastapi.tiangolo.com/zh/tutorial/path-params-numeric-validations/)
+* [x] **2b.【速过】路径参数和数值校验** — [https://fastapi.tiangolo.com/zh/tutorial/path-params-numeric-validations/](https://fastapi.tiangolo.com/zh/tutorial/path-params-numeric-validations/)
 
 - 学什么：`Path(ge=1)` 这类数值约束（一眼扫过即可，知道路径参数也能加范围校验）
 
@@ -58,7 +48,7 @@
 
 - 验收：`GET /chat/history?session_id=xx&limit=20` 能取到参数
 
-* [ ] **3b.【速过】查询参数和字符串校验** — [https://fastapi.tiangolo.com/zh/tutorial/query-params-str-validations/](https://fastapi.tiangolo.com/zh/tutorial/query-params-str-validations/)
+* [x] **3b.【速过】查询参数和字符串校验** — [https://fastapi.tiangolo.com/zh/tutorial/query-params-str-validations/](https://fastapi.tiangolo.com/zh/tutorial/query-params-str-validations/)
 
 - 学什么：`Query(min_length=1, pattern=...)` 给可选参数加约束（一眼扫过即可）
 
@@ -72,19 +62,19 @@
 
 - 为什么重要：这和 LLM function calling 的 "结构化输出" 是同一套东西
 
-* [ ] **4b.【速过】请求体 - 多个参数** — [https://fastapi.tiangolo.com/zh/tutorial/body-multiple-params/](https://fastapi.tiangolo.com/zh/tutorial/body-multiple-params/)
+* [x] **4b.【速过】请求体 - 多个参数** — [https://fastapi.tiangolo.com/zh/tutorial/body-multiple-params/](https://fastapi.tiangolo.com/zh/tutorial/body-multiple-params/)
 
 - 学什么：body 里同时放模型和单个字段（如 `user_id: str = Body(...)`）会被包成 JSON 对象（一眼扫过即可）
 
 - 验收：`POST /chat` 的 body 里 `ChatRequest` 模型和 `user_id` 字段分开传通
 
-* [ ] **4c. 请求体 - 字段** — [https://fastapi.tiangolo.com/zh/tutorial/body-fields/](https://fastapi.tiangolo.com/zh/tutorial/body-fields/)
+* [x] **4c. 请求体 - 字段** — [https://fastapi.tiangolo.com/zh/tutorial/body-fields/](https://fastapi.tiangolo.com/zh/tutorial/body-fields/)
 
 - 学什么：`Field(min_length=1, max_length=2000)` 给 Pydantic 模型字段加校验
 
 - 验收：给 `ChatRequest.message` 加长度限制，传超长内容看自动报错
 
-* [ ] **5. 响应模型** — [https://fastapi.tiangolo.com/zh/tutorial/response-model/](https://fastapi.tiangolo.com/zh/tutorial/response-model/)
+* [x] **5. 响应模型** — [https://fastapi.tiangolo.com/zh/tutorial/response-model/](https://fastapi.tiangolo.com/zh/tutorial/response-model/)
 
 - 学什么：用 `response_model=ChatResponse` 规范返回结构（只暴露你该返回的字段）
 
