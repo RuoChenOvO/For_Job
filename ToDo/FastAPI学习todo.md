@@ -84,19 +84,19 @@
 
 
 
-* [ ] **6. 异常处理** — [https://fastapi.tiangolo.com/zh/tutorial/handling-errors/](https://fastapi.tiangolo.com/zh/tutorial/handling-errors/)
+* [x] **6. 异常处理** — [https://fastapi.tiangolo.com/zh/tutorial/handling-errors/](https://fastapi.tiangolo.com/zh/tutorial/handling-errors/)
 
 - 学什么：`HTTPException(status_code=404, detail=...)`，自定义错误
 
 - 验收：模型调用失败时接口返回 502/503 而不是直接崩溃
 
-* [ ] **7. 依赖注入** — [https://fastapi.tiangolo.com/zh/tutorial/dependencies/](https://fastapi.tiangolo.com/zh/tutorial/dependencies/)
+* [x] **7. 依赖注入** — [https://fastapi.tiangolo.com/zh/tutorial/dependencies/](https://fastapi.tiangolo.com/zh/tutorial/dependencies/)
 
 - 学什么：`Depends()` 把 "获取数据库连接 / 拿 LLM client / 读 API key" 抽成公共依赖，别在每个路由里重复写
 
 - 验收：把 "初始化 DeepSeek client" 写成一个依赖，`/chat` 和 `/chat/history` 都用它
 
-* [ ] **8. 异步 async/await** — [https://fastapi.tiangolo.com/zh/tutorial/async/](https://fastapi.tiangolo.com/zh/tutorial/async/)
+* [x] **8. 异步 async/await** — [https://fastapi.tiangolo.com/zh/tutorial/async/](https://fastapi.tiangolo.com/zh/tutorial/async/)
 
 - 学什么：为什么 LLM 调用要 `async def`、`await client.chat.completions.create(...)`
 
