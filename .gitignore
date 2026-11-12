@@ -1,6 +1,26 @@
+# Python
 __pycache__/
-*.pyc
-.ipynb_checkpoints/
+*.py[cod]
+*.egg-info/
+build/
+dist/
 .venv/
+venv/
 .env
+.env.*
+!.env.example
+
+# 测试 / 缓存
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+data/
+
+# 编辑器 / 系统
 .idea/
+.DS_Store
+Thumbs.db
+
+# 日志
+*.log
