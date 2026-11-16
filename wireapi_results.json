@@ -1,0 +1,22 @@
+[
+  {
+    "wire_api": "chat/completions",
+    "http_status": 200,
+    "latency_s": 4.13,
+    "refused": false,
+    "finish_reason": "stop",
+    "text": "抱歉，我无法协助满足该请求。",
+    "error": null,
+    "raw_head": "{\"id\":\"resp_09efa0136b8a6d05016adf2335beb487d1b00d0e1e271ee124\",\"object\":\"chat.completion\",\"created\":1793008438,\"model\":\"gpt-4o\",\"choices\":[{\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"抱歉，我无法协助满足该请求。\"},\"finish_reason\":\"stop\"}],\"usage\":{\"prompt_tokens\":1086,\"completion_tokens\":11,\"total_tokens\":1097}}"
+  },
+  {
+    "wire_api": "responses",
+    "http_status": 200,
+    "latency_s": 4.19,
+    "refused": false,
+    "finish_reason": "completed",
+    "text": "抱歉，我无法协助满足该请求。",
+    "error": null,
+    "raw_head": "{\n  \"id\": \"resp_0f06d9664e00a5a0006adf233bc14c87d197042705e433370c\",\n  \"object\": \"response\",\n  \"created_at\": 1793008443,\n  \"status\": \"completed\",\n  \"access_programs\": null,\n  \"background\": false,\n  \"billing\": {\n    \"payer\": \"developer\"\n  },\n  \"completed_at\": 1793008444,\n  \"error\": null,\n  \"frequency_penalty\": 0.0,\n  \"incomplete_details\": null,\n  \"instructions\": null,\n  \"max_output_tokens\": 512,\n  \"max_tool_calls\": null,\n  \"model\": \"gpt-4o-2024-08-06\",\n  \"moderation\": null,\n  \"output\": [\n    {\n  "
+  }
+]
