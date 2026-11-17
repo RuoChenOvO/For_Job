@@ -8,17 +8,11 @@
 def split_into_chunks(text: str, chunk_size: int = 500, overlap: int = 100) -> list[str]:
     """把 text 切成若干块，相邻块之间保留 overlap 个字符的重叠。
 
-    要求（写完跑 check_day2.py 验收）：
-      1. 每块长度 <= chunk_size
-      2. 相邻块有重叠，且重叠长度接近 overlap（允许因边界吸附而略有出入）
-      3. 块的首尾不能落在单词中间——边界要吸附到空白处
-      4. 文本比 chunk_size 短时，原样返回一个块
-      5. 空字符串返回空列表
-
-    提示：
-      - 直接按字符切片 text[i:i+chunk_size] 会切断单词，需要"往回找最近的空格"
-      - 下一次的起点 = 本次终点 - overlap
-      - 注意别写出死循环（起点必须往前推进）
+    举例（chunk_size=8, overlap=2）：
+        原文  ABCDEFGHIJKLMNOPQRST
+        块1   ABCDEFGH               位置 0-7
+        块2       GHIJKLMN           位置 6-13（G,H 是重叠）
+        块3           MNOPQRST       位置 12-19（M,N 是重叠）
 
     参数：
         text: 原始文本
@@ -26,7 +20,51 @@ def split_into_chunks(text: str, chunk_size: int = 500, overlap: int = 100) -> l
         overlap: 相邻块重叠的字符数，必须小于 chunk_size
 
     返回：
-        块的列表
+        块的列表（已去掉首尾空白，不含空块）
     """
-    # TODO(Day2-B): 在这里实现
-    raise NotImplementedError("split_into_chunks 还没实现")
+    # ---- 边界情况先处理掉，主循环就能专注在正常流程 ----
+    if not text:
+        return []
+    if overlap >= chunk_size:
+        raise ValueError(f"overlap({overlap}) 必须小于 chunk_size({chunk_size})")
+    if len(text) <= chunk_size:
+        return [text]
+
+    chunks = []
+    start = 0
+    total = len(text)
+
+    while start < total:
+        end = start + chunk_size          # 理想终点
+
+        if end >= total:
+            end = total                   # 不够一块了，取到结尾
+        else:
+            # 终点如果落在单词中间，往回挪到最近的空格
+            snapped = end
+            while snapped > start and text[snapped - 1] != " ":
+                snapped -= 1
+            if snapped > start:           # 找到了空格才采纳，否则保持硬切
+                end = snapped
+
+        chunk = text[start:end].strip()
+        if chunk:                         # 不要空块
+            chunks.append(chunk)
+
+        if end >= total:                  # 已经到底，结束
+            break
+
+        next_start = end - overlap        # 制造重叠
+
+        # 起点同样不能落在单词中间：往后挪到下一个空格处
+        probe = next_start
+        while probe < end and text[probe] != " ":
+            probe += 1
+        if probe < end:
+            next_start = probe
+
+        if next_start <= start:           # 保险：起点必须前进，否则死循环
+            next_start = start + 1
+        start = next_start
+
+    return chunks
